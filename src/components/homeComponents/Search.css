@@ -1,0 +1,29 @@
+.bg-img{
+    background-image: url('../../images/bg.jpg');
+    height: 400px;
+    background-size: cover;
+    background-position-y: center;
+    position: sticky;
+    top: 53px;
+    z-index: 40;
+}
+.InputGroup{
+    width: 20%  ;
+}
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    /* backdrop-filter: blur(3px); */
+}
+.form-control{
+    border-radius: 20px;
+    box-shadow: 0;
+}
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: none;
+    border: none;
+}

@@ -29,14 +29,15 @@ const SingleCategoryPage = () => {
       {meal ? (
         <div className="ms-5 me-5 mt-5">
           <h5>{meal.strMeal}</h5>
-          <div className=" d-flex flex-row mt-3" style={{ height: "40rem",}}>
-            <Card sx={{ width:'350%',backgroundColor:'#e5e0e0;'}}>
+          <div className=" d-flex flex-lg-row flex-column mt-3">
+            <Card sx={{ flex:'0 0 35%',backgroundColor:'#e5e0e0;'}}>
           
                 <CardMedia
                   component="img"
                   height="100%"
                   width={'100%'}
                   image={meal.strMealThumb}
+                  className="img-thumbnail"
                   alt="green iguana"
                 />
               
@@ -45,7 +46,7 @@ const SingleCategoryPage = () => {
               <List>
                 <h5>Ingredients</h5>
                 <ul
-                  className="d-flex flex-wrap mt-4 col-gap-5"
+                  className="d-flex flex-wrap mt-lg-4 mt-3 col-gap-5"
                   style={{columnGap:'30px'}}
                 >
                   {Object.keys(meal).map((key) => {
@@ -64,8 +65,8 @@ const SingleCategoryPage = () => {
                   })}
                 </ul>
               </List>
-              <Typography className="mt-5" >{meal.strInstructions}</Typography>
-             <div className="d-flex gap-4" style={{position:'absolute',bottom:'45px'}}>
+              <Typography className="mt-lg-5 mt-3" >{meal.strInstructions}</Typography>
+             <div className="d-flex mt-5 mb-5 gap-4" >
             
             <div> <b>Category:</b> {meal.strCategory}</div>
               <div><b>Area:</b> {meal.strArea}</div>

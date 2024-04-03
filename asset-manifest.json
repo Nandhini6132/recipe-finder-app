@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/recipe-finder-app/static/css/main.e6f5e549.css",
-    "main.js": "/recipe-finder-app/static/js/main.4fc2a4d2.js",
-    "static/media/bg.jpg": "/recipe-finder-app/static/media/bg.83b9477a23ff13a4aa40.jpg",
-    "index.html": "/recipe-finder-app/index.html",
-    "main.e6f5e549.css.map": "/recipe-finder-app/static/css/main.e6f5e549.css.map",
-    "main.4fc2a4d2.js.map": "/recipe-finder-app/static/js/main.4fc2a4d2.js.map"
+    "main.css": "/recipe-finder-app.git/static/css/main.a431a52b.css",
+    "main.js": "/recipe-finder-app.git/static/js/main.a276884a.js",
+    "static/media/bg.jpg": "/recipe-finder-app.git/static/media/bg.83b9477a23ff13a4aa40.jpg",
+    "index.html": "/recipe-finder-app.git/index.html",
+    "main.a431a52b.css.map": "/recipe-finder-app.git/static/css/main.a431a52b.css.map",
+    "main.a276884a.js.map": "/recipe-finder-app.git/static/js/main.a276884a.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6f5e549.css",
-    "static/js/main.4fc2a4d2.js"
+    "static/css/main.a431a52b.css",
+    "static/js/main.a276884a.js"
   ]
 }

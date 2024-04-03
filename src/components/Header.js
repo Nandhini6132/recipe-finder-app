@@ -36,7 +36,7 @@ function Header({ user, handleLogOut }) {
       }}
     >
       <Container fluid>
-        <Navbar.Brand href="#home" className="me-auto ps-md-5" onClick={handleNavigate}>
+        <Navbar.Brand href="" className="me-auto ps-md-5" onClick={handleNavigate}>
           Recipe App
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

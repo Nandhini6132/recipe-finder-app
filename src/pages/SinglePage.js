@@ -144,7 +144,7 @@ const SinglePage = ({ handleLogin, user }) => {
                 }}
               >
                 <CardActionArea>
-                  <Link to={`/recipe-finder-app/singlepage/${strCategory}/${a.idMeal}`}>
+                  <Link to={`/singlepage/${strCategory}/${a.idMeal}`}>
                     <CardMedia
                       component="img"
                       height="300"

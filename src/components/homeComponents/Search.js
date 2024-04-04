@@ -29,7 +29,7 @@ const Search = () => {
      <Form className='form d-flex flex-column' onSubmit={handleSearch}>
           <InputGroup className='InputGroup'>
             <Form.Control className='form-control' value={term} onChange={(e) => setTerm(e.target.value)} type='text' placeholder='Search by category, Area' />
-            <button type="submit" className='btn btn-success'><SearchIcon /></button>
+            <button type="submit" className='btn' style={{backgroundColor:'#bd8e00'}}><SearchIcon sx={{color:'white'}}/></button>
           </InputGroup>
             <h3 className='text-warning mt-4'>Search  Your Favourite food</h3>
         </Form>

@@ -123,10 +123,7 @@ const SinglePage = ({ handleLogin, user }) => {
               type="text"
               placeholder="Search by letter,Category,Area"
             />
-            <button className="btn btn-success">
-              {" "}
-              <SearchIcon />
-            </button>
+           <button type="submit" className='btn' style={{backgroundColor:'#bd8e00'}}><SearchIcon sx={{color:'white'}}/></button>
           </InputGroup>
         </Form>
       </div>

@@ -19,6 +19,7 @@ import {
   ListItemButton,
   ListItemText,
   Stack,
+  Typography,
 } from "@mui/material";
 
 function Header({ user, handleLogOut }) {
@@ -57,7 +58,7 @@ function Header({ user, handleLogOut }) {
       <Container fluid>
         <Navbar.Brand className="me-auto ps-md-5">
           <Link
-            to={"/recipe-finder-app"}
+            to={"/"}
             style={{ textDecoration: "none", color: "black" }}
           >
             Recipe App
@@ -67,11 +68,13 @@ function Header({ user, handleLogOut }) {
         <Navbar.Collapse id="basic-navbar-nav" className="pe-md-5">
           <Nav className="ms-auto align-items-center ">
             <Nav.Link to={"/wishlist"}>
+              <Tooltip title='wishlist' arrow>
               <Link to={"/wishlist"}>
                 <Badge badgeContent={wishLength} color="primary">
                   <FavoriteIcon sx={{ color: "green" }} />
                 </Badge>
               </Link>
+              </Tooltip>
             </Nav.Link>
 
             {user && (
@@ -101,17 +104,20 @@ function Header({ user, handleLogOut }) {
                       <ListItem disablePadding className="d-flex flex-column">
                         <ListItemButton>
                           <Avatar
-                            src={user?.photoURL}
+                            src={user?.photoURL} alt={user?.displayName}
                             style={{ width: "100px", height: "100px" }}
                           />
                         </ListItemButton>
 
                       
                         <Stack gap={2} textAlign={'center'}>
+                          <Stack>
+                          <Typography variant="h4">Welcome</Typography>
                         <ListItemText
                           primary={user?.displayName}
                           primaryTypographyProps={{ fontSize: "25px" }}
                         />
+                          </Stack>
                         <a
                           class="dropdown-item"
                           href="#"
@@ -124,13 +130,7 @@ function Header({ user, handleLogOut }) {
                     </List>
                   </Box>
                 </Drawer>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#" onClick={handleLogOut}>
-                      Logout
-                    </a>
-                  </li>
-                </ul>
+              
               </Nav.Link>
             )}
           </Nav>

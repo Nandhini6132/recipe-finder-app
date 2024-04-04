@@ -50,7 +50,7 @@ function App() {
      <Header user={user} handleLogOut={handleLogOut}/>
      {/* <Search/> */}
      <Routes>
-      <Route path="/recipe-finder-app" element={<Home />}/>
+      <Route path="/" exact element={<Home />}/>
       <Route path="/singlepage/:strCategory" element={<SinglePage handleLogin={handleLogin} user={user} />}/>
       <Route path="/singlepage/:strCategory/:idMeal" element={<SingleCategoryPage/>}/>
       <Route path="/wishlist" element={<WishList user={user}/>}/>

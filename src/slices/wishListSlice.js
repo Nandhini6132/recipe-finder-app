@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { auth } from "../firebase/firebase";
 
+console.log(auth)
 const initialState = {
   wishCount: JSON.parse(localStorage.getItem(auth.currentUser?.displayName)) || [],
+  // wishCount: JSON.parse(localStorage.getItem('Nandhini Saravanan')) || [],
   userName: {
     name: "",
     isAuth: false,
@@ -47,5 +49,3 @@ const wishListSlice = createSlice({
 export default wishListSlice.reducer;
 export const { addWishList, removeFromWishlist, login, logout } =
   wishListSlice.actions;
-
-

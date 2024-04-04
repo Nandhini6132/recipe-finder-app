@@ -18,7 +18,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import Rating from "@mui/material/Rating";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { addWishList, login, removeFromWishlist } from "../slices/wishListSlice";
+import {
+  addWishList,
+  login,
+  removeFromWishlist,
+} from "../slices/wishListSlice";
 import { addDoc, collection, deleteDoc, doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../firebase/firebase";
 import { type } from "@testing-library/user-event/dist/type";
@@ -32,17 +36,17 @@ const SinglePage = ({ handleLogin, user }) => {
   console.log(noData, "t/f");
   const [term, setTerm] = useState();
   const [valueMap, setValueMap] = useState({});
-  const [isFav, setIsFav] = useState(true);
-  // const wishlist = useSelector((state) => state.wishlist.wishCount);
-  const wishlist= JSON.parse(localStorage.getItem(auth.currentUser?.displayName))||[]
-  
+  console.log(valueMap,'vmap')
+  const [isFav, setIsFav] = useState(false);
+  const wishlistState = useSelector((state) => state.wishlist.wishCount);
+  const wishlist =
+    JSON.parse(localStorage.getItem(auth.currentUser?.displayName)) || [];
 
   useEffect(() => {
     if (term) {
       dispatch(fetchAsyncSearchByLetter(term));
       dispatch(fetchAsyncSearchByArea(term));
       dispatch(fetchAsyncFilterByIngredient(term));
-      
     } else {
       dispatch(fetchAsyncSingleFood(strCategory));
     }
@@ -54,37 +58,44 @@ const SinglePage = ({ handleLogin, user }) => {
     } else {
       setNoData(false);
     }
-  }, [selector,wishlist]);
+  }, [selector, wishlist]);
 
   const handleChange = async (idMeal, newValue, a, id) => {
-    console.log(id);
+    console.log(idMeal,'idMeal');
+    console.log(newValue,'newvalue');
+    console.log(a,'a');
+    console.log(id,'id');
     try {
       if (user) {
         setValueMap((prevValueMap) => ({
           ...prevValueMap,
           [idMeal]: newValue === prevValueMap[idMeal] ? 0 : newValue,
         }));
+  
 
-        const isInWishlist = wishlist?.some((item) => item.idMeal === idMeal);
+        const isInWishlist = wishlist.some((item) => item.wishCount.idMeal === idMeal);
 
         if (newValue === 1) {
           if (!isInWishlist) {
             await dispatch(addWishList({ idMeal, ...a }));
-         
-            addDoc(collection(db, 'user'), { idMeal, ...a });
+            setIsFav(true)
+            await addDoc(collection(db, "user"), { idMeal, ...a });
+          } else {
+            console.log("Item already in wishlist.");
           }
         } else {
-          console.log(typeof(idMeal,'type'))
           await dispatch(removeFromWishlist({ idMeal }));
-          const mealDocRef = doc(db, 'user', idMeal);
-         
-          const mealDocSnapshot = await getDoc(mealDocRef); 
+          setIsFav(false)
+
+          const mealDocRef = doc(db, "user", idMeal);
+          const mealDocSnapshot = await getDoc(mealDocRef);
           if (mealDocSnapshot.exists()) {
-          
             await deleteDoc(mealDocRef);
             console.log(`Document with ID ${idMeal} deleted from Firestore.`);
           } else {
-            console.log(`Document with ID ${idMeal} does not exist in Firestore.`);
+            console.log(
+              `Document with ID ${idMeal} does not exist in Firestore.`
+            );
           }
         }
       } else {
@@ -161,7 +172,7 @@ const SinglePage = ({ handleLogin, user }) => {
                             color: wishlist.some(
                               (item) =>
                                 item.wishCount.idMeal === a.idMeal && item.isFav
-                            )
+                            ) 
                               ? "green"
                               : "",
                           }}

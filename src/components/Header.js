@@ -42,8 +42,8 @@ function Header({ user, handleLogOut }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="pe-md-5"> 
           <Nav className="ms-auto align-items-center ">
-            <Nav.Link to={"/wishlist"}>
-              <Link to={"/wishlist"}>
+            <Nav.Link to={"/recipe-finder-app/wishlist"}>
+              <Link to={"/recipe-finder-app/wishlist"}>
                 <Badge badgeContent={wishLength} color="primary">
                   <FavoriteIcon sx={{ color: "green" }} />
                 </Badge>

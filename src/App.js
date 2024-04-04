@@ -51,9 +51,9 @@ function App() {
      {/* <Search/> */}
      <Routes>
       <Route path="/recipe-finder-app" element={<Home />}/>
-      <Route path="/singlepage/:strCategory" element={<SinglePage handleLogin={handleLogin} user={user} />}/>
-      <Route path="/singlepage/:strCategory/:idMeal" element={<SingleCategoryPage/>}/>
-      <Route path="/wishlist" element={<WishList user={user}/>}/>
+      <Route path="/recipe-finder-app/singlepage/:strCategory" element={<SinglePage handleLogin={handleLogin} user={user} />}/>
+      <Route path="/recipe-finder-app/singlepage/:strCategory/:idMeal" element={<SingleCategoryPage/>}/>
+      <Route path="/recipe-finder-app/wishlist" element={<WishList user={user}/>}/>
      </Routes>
     </div>
   );

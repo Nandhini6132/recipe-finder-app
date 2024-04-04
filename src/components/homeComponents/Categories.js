@@ -49,7 +49,7 @@ const Categories = ({handleLogin}) => {
         <Card key={index} sx={{ width: "270px",backgroundColor:'#e5e0e0;' }}>
           <CardActionArea>
             <Link
-              to={`/singlepage/${food.strCategory}`}
+              to={`/recipe-finder-app/singlepage/${food.strCategory}`}
               style={{ textDecoration: "none" }}
             >
               <CardMedia

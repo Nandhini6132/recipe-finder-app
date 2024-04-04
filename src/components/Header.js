@@ -37,7 +37,7 @@ function Header({ user, handleLogOut }) {
     >
       <Container fluid>
         <Navbar.Brand className="me-auto ps-md-5" >
-          <Link to={'/'}>Recipe App</Link>
+          <Link to={'/'} style={{textDecoration:'none',color:'black'}}>Recipe App</Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="pe-md-5"> 

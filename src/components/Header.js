@@ -10,9 +10,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import { auth } from "../firebase/firebase";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import {
   Box,
+  Divider,
   Drawer,
   List,
   ListItem,
@@ -57,10 +59,7 @@ function Header({ user, handleLogOut }) {
     >
       <Container fluid>
         <Navbar.Brand className="me-auto ps-md-5">
-          <Link
-            to={"/"}
-            style={{ textDecoration: "none", color: "black" }}
-          >
+          <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
             Recipe App
           </Link>
         </Navbar.Brand>
@@ -68,12 +67,12 @@ function Header({ user, handleLogOut }) {
         <Navbar.Collapse id="basic-navbar-nav" className="pe-md-5">
           <Nav className="ms-auto align-items-center ">
             <Nav.Link to={"/wishlist"}>
-              <Tooltip title='wishlist' arrow>
-              <Link to={"/wishlist"}>
-                <Badge badgeContent={wishLength} color="primary">
-                  <FavoriteIcon sx={{ color: "green" }} />
-                </Badge>
-              </Link>
+              <Tooltip title="wishlist" arrow>
+                <Link to={"/wishlist"}>
+                  <Badge badgeContent={wishLength} color="primary">
+                    <FavoriteIcon sx={{ color: "green" }} />
+                  </Badge>
+                </Link>
               </Tooltip>
             </Nav.Link>
 
@@ -104,33 +103,71 @@ function Header({ user, handleLogOut }) {
                       <ListItem disablePadding className="d-flex flex-column">
                         <ListItemButton>
                           <Avatar
-                            src={user?.photoURL} alt={user?.displayName}
+                            src={user?.photoURL}
+                            alt={user?.displayName}
                             style={{ width: "100px", height: "100px" }}
                           />
                         </ListItemButton>
 
-                      
-                        <Stack gap={2} textAlign={'center'}>
+                        <Stack gap={3}>
                           <Stack>
-                          <Typography variant="h4">Welcome</Typography>
-                        <ListItemText
-                          primary={user?.displayName}
-                          primaryTypographyProps={{ fontSize: "25px" }}
-                        />
+                            <Typography variant="h4">Welcome</Typography>
+                            <ListItemText
+                              primary={user?.displayName}
+                              primaryTypographyProps={{ fontSize: "25px" }}
+                            />
                           </Stack>
-                        <a
-                          class="dropdown-item"
-                          href="#"
-                          onClick={handleLogOut}
-                        >
-                          Logout <LogoutIcon/>
-                        </a>
+                          <Divider />
+                          <Stack gap={8}>
+                            <Stack gap={3}>
+                              <Link to={"/"} className="d-flex">
+                                <DashboardIcon sx={{ color: "grey" }} />
+                                <Typography
+                                  sx={{
+                                    textDecoration: "underline",
+                                    color: "black",
+                                    ml: 2,
+                                  }}
+                                >
+                                  All Categories
+                                </Typography>
+                              </Link>
+                              <Tooltip title="wishlist" arrow>
+                                <Link to={"/wishlist"} className="d-flex">
+                                  <Badge color="primary">
+                                    <FavoriteIcon sx={{ color: "grey" }} />
+                                  </Badge>{" "}
+                                  <Typography
+                                    sx={{
+                                      textDecoration: "underline",
+                                      color: "black",
+                                      ml: 2,
+                                    }}
+                                  >
+                                    My Wishlist
+                                  </Typography>
+                                </Link>
+                              </Tooltip>
+                            </Stack>
+
+                            <Divider/>
+                            <a class="d-flex" href="#" onClick={handleLogOut}>
+                              <LogoutIcon sx={{ mr: 2, color: "grey" }} />{" "}
+                              <Typography
+                                sx={{
+                                  textDecoration: "underline",
+                                  color: "black",
+                                }}
+                              >
+                                Logout
+                              </Typography>
+                            </a>
+                          </Stack>
                         </Stack>
                       </ListItem>
                     </List>
                   </Box>
                 </Drawer>
-              
               </Nav.Link>
             )}
           </Nav>
